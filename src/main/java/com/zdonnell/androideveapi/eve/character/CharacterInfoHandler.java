@@ -64,6 +64,7 @@ public class CharacterInfoHandler extends AbstractContentHandler {
 			response.setLastKnownLocation(getString());
 		else if (qName.equals("securityStatus"))
 			response.setSecurityStatus(getDouble());
+		super.endElement(uri, localName, qName);
 	}
 
 	private EveBloodline getBloodline() {
