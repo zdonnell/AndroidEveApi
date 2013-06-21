@@ -35,6 +35,8 @@
 
 <p>AndroidEveApi expands on the functionality of EveApi by handling the caching of of api responses for you.</p>
 
+<p>Please understand that this library is early in development, and it should be considered experimental software.</p>
+
 <h2>
 <a name="use" class="anchor" href="#use"><span class="octicon octicon-link"></span></a>Use</h2>
 
@@ -45,7 +47,9 @@
 <span class="o">{</span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onUpdate</span><span class="o">(</span><span class="n">CharactersResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// Code to use the resposne</span>
+        <span class="c1">// Code to run when the response is obtained.</span>
+        <span class="c1">// This may be called twice.  Once if a cached response is obtained, and twice if</span>
+        <span class="c1">// the cache is expired and a new server ApiResponse is obtained.</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
