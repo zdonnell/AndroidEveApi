@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.548" errors="0" skipped="0" tests="2" name="com.zdonnell.androideveapi.corporation.member.tracking.TrackingParserTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries"/>
+    <property name="java.vm.version" value="20.45-b01-451"/>
+    <property name="awt.nativeDoubleBuffering" value="true"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="mrj.build" value="11M4406"/>
+    <property name="java.vm.vendor" value="Apple Inc."/>
+    <property name="java.vendor.url" value="http://www.apple.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/zdonnell/AndroidEveApi"/>
+    <property name="java.runtime.version" value="1.6.0_45-b06-451-11M4406"/>
+    <property name="java.awt.graphicsenv" value="apple.awt.CGraphicsEnvironment"/>
+    <property name="basedir" value="/Users/zdonnell/AndroidEveApi"/>
+    <property name="java.endorsed.dirs" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="surefire.real.class.path" value="/var/folders/js/kv9p9zqd7_134cr_v7v6p_3076bd6s/T/surefirebooter3176637711092809682.jar"/>
+    <property name="java.io.tmpdir" value="/var/folders/js/kv9p9zqd7_134cr_v7v6p_3076bd6s/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.jnu.encoding" value="MacRoman"/>
+    <property name="java.library.path" value=".:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="surefire.test.class.path" value="/Users/zdonnell/AndroidEveApi/target/test-classes:/Users/zdonnell/AndroidEveApi/target/classes:/Users/zdonnell/.m2/repository/com/google/android/android/4.1.1.4/android-4.1.1.4.jar:/Users/zdonnell/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/Users/zdonnell/.m2/repository/org/apache/httpcomponents/httpclient/4.0.1/httpclient-4.0.1.jar:/Users/zdonnell/.m2/repository/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar:/Users/zdonnell/.m2/repository/commons-codec/commons-codec/1.3/commons-codec-1.3.jar:/Users/zdonnell/.m2/repository/org/khronos/opengl-api/gl1.1-android-2.1_r1/opengl-api-gl1.1-android-2.1_r1.jar:/Users/zdonnell/.m2/repository/xerces/xmlParserAPIs/2.6.2/xmlParserAPIs-2.6.2.jar:/Users/zdonnell/.m2/repository/xpp3/xpp3/1.1.4c/xpp3-1.1.4c.jar:/Users/zdonnell/.m2/repository/org/json/json/20080701/json-20080701.jar:/Users/zdonnell/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar:/Users/zdonnell/.m2/repository/org/apache/camel/camel-jetty/2.5.0/camel-jetty-2.5.0.jar:/Users/zdonnell/.m2/repository/org/apache/camel/camel-core/2.5.0/camel-core-2.5.0.jar:/Users/zdonnell/.m2/repository/org/fusesource/commonman/commons-management/1.0/commons-management-1.0.jar:/Users/zdonnell/.m2/repository/org/apache/camel/camel-http/2.5.0/camel-http-2.5.0.jar:/Users/zdonnell/.m2/repository/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-server/7.1.6.v20100715/jetty-server-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-continuation/7.1.6.v20100715/jetty-continuation-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-http/7.1.6.v20100715/jetty-http-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-io/7.1.6.v20100715/jetty-io-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-security/7.1.6.v20100715/jetty-security-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-servlet/7.1.6.v20100715/jetty-servlet-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-servlets/7.1.6.v20100715/jetty-servlets-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-util/7.1.6.v20100715/jetty-util-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-client/7.1.6.v20100715/jetty-client-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-jmx/7.1.6.v20100715/jetty-jmx-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-webapp/7.1.6.v20100715/jetty-webapp-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-xml/7.1.6.v20100715/jetty-xml-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/javax/xml/bind/jaxb-api/2.1/jaxb-api-2.1.jar:/Users/zdonnell/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar:/Users/zdonnell/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar:/Users/zdonnell/.m2/repository/org/freemarker/freemarker/2.3.16/freemarker-2.3.16.jar:"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.8.4"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/zdonnell"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="apple.awt.CPrinterJob"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="file.encoding" value="MacRoman"/>
+    <property name="user.name" value="zdonnell"/>
+    <property name="java.class.path" value="/Users/zdonnell/AndroidEveApi/target/test-classes:/Users/zdonnell/AndroidEveApi/target/classes:/Users/zdonnell/.m2/repository/com/google/android/android/4.1.1.4/android-4.1.1.4.jar:/Users/zdonnell/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/Users/zdonnell/.m2/repository/org/apache/httpcomponents/httpclient/4.0.1/httpclient-4.0.1.jar:/Users/zdonnell/.m2/repository/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar:/Users/zdonnell/.m2/repository/commons-codec/commons-codec/1.3/commons-codec-1.3.jar:/Users/zdonnell/.m2/repository/org/khronos/opengl-api/gl1.1-android-2.1_r1/opengl-api-gl1.1-android-2.1_r1.jar:/Users/zdonnell/.m2/repository/xerces/xmlParserAPIs/2.6.2/xmlParserAPIs-2.6.2.jar:/Users/zdonnell/.m2/repository/xpp3/xpp3/1.1.4c/xpp3-1.1.4c.jar:/Users/zdonnell/.m2/repository/org/json/json/20080701/json-20080701.jar:/Users/zdonnell/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar:/Users/zdonnell/.m2/repository/org/apache/camel/camel-jetty/2.5.0/camel-jetty-2.5.0.jar:/Users/zdonnell/.m2/repository/org/apache/camel/camel-core/2.5.0/camel-core-2.5.0.jar:/Users/zdonnell/.m2/repository/org/fusesource/commonman/commons-management/1.0/commons-management-1.0.jar:/Users/zdonnell/.m2/repository/org/apache/camel/camel-http/2.5.0/camel-http-2.5.0.jar:/Users/zdonnell/.m2/repository/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-server/7.1.6.v20100715/jetty-server-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-continuation/7.1.6.v20100715/jetty-continuation-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-http/7.1.6.v20100715/jetty-http-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-io/7.1.6.v20100715/jetty-io-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-security/7.1.6.v20100715/jetty-security-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-servlet/7.1.6.v20100715/jetty-servlet-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-servlets/7.1.6.v20100715/jetty-servlets-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-util/7.1.6.v20100715/jetty-util-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-client/7.1.6.v20100715/jetty-client-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-jmx/7.1.6.v20100715/jetty-jmx-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-webapp/7.1.6.v20100715/jetty-webapp-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/org/eclipse/jetty/jetty-xml/7.1.6.v20100715/jetty-xml-7.1.6.v20100715.jar:/Users/zdonnell/.m2/repository/javax/xml/bind/jaxb-api/2.1/jaxb-api-2.1.jar:/Users/zdonnell/.m2/repository/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar:/Users/zdonnell/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar:/Users/zdonnell/.m2/repository/org/freemarker/freemarker/2.3.16/freemarker-2.3.16.jar:"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home"/>
+    <property name="sun.java.command" value="/var/folders/js/kv9p9zqd7_134cr_v7v6p_3076bd6s/T/surefirebooter3176637711092809682.jar /var/folders/js/kv9p9zqd7_134cr_v7v6p_3076bd6s/T/surefire3060960892955964758tmp /var/folders/js/kv9p9zqd7_134cr_v7v6p_3076bd6s/T/surefire1680318364286201923tmp"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="apple.awt.CToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.6.0_45"/>
+    <property name="java.ext.dirs" value="/Library/Java/Extensions:/System/Library/Java/Extensions:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext"/>
+    <property name="sun.boot.class.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jce.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar"/>
+    <property name="java.vendor" value="Apple Inc."/>
+    <property name="localRepository" value="/Users/zdonnell/.m2/repository"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.apple.com/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="mrj.version" value="1070.1.6.0_45-451"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase time="0.229" classname="com.zdonnell.androideveapi.corporation.member.tracking.TrackingParserTest" name="getResponse"/>
+  <testcase time="0.317" classname="com.zdonnell.androideveapi.corporation.member.tracking.TrackingParserTest" name="getExtendedResponse"/>
+</testsuite>
