@@ -8,6 +8,18 @@
 	<name>AndroidEveApi</name>
 	<description>Parsers for the eve online api for Android</description>
 	<url>https://github.com/zdonnell/AndroidEveApi</url>
+	<distributionManagement>
+		<repository>
+	        <id>github.com/zdonnell/androideveapi</id>
+	        <name>EveAPI Maven Repository</name>
+	        <url>git:https://www.github.com/zdonnell/androideveapi/m2/releases</url>
+		</repository>
+		<snapshotRepository>
+	        <id>egithub.com/zdonnell/eden</id>
+	        <name>EveAPI Maven Repository</name>
+	        <url>git:https://www.github.com/zdonnell/androideveapi/m2/snapshots</url>
+		</snapshotRepository>
+        </distributionManagement>
 	<licenses>
         <license>
             <name>GNU Lesser General Public License v3.0</name>
