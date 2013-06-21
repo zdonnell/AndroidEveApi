@@ -9,8 +9,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import android.util.Log;
 
 import com.zdonnell.androideveapi.core.AbstractContentHandler;
 import com.zdonnell.androideveapi.core.ApiRequest;
@@ -19,7 +18,6 @@ import com.zdonnell.androideveapi.exception.ApiException;
 import com.zdonnell.androideveapi.utils.InputStreamSplitter;
 
 public class FileCopyConnector extends ApiConnector {
-	private final Logger logger = LoggerFactory.getLogger(getClass());
 	private final ApiConnector baseConnector;
 	private final File destinationDirectory;
 
@@ -47,7 +45,7 @@ public class FileCopyConnector extends ApiConnector {
 			outputStream = new FileOutputStream(outputFile);
 			inputStream = new InputStreamSplitter(inputStream, outputStream);
 		} catch (FileNotFoundException e) {
-			logger.error("Could not write response xml to file: ", e);
+			Log.e("AndroidEveApi", "Could not write response xml to file: ");
 		}
 		E response = getApiResponse(contentHandler, inputStream, clazz);
 		if (outputStream != null) {
@@ -55,7 +53,7 @@ public class FileCopyConnector extends ApiConnector {
 				outputStream.flush();
 				outputStream.close();
 			} catch (IOException e) {
-				logger.error("Could not flush/close response xml file: ", e);
+				Log.e("AndroidEveApi", "Could not flush/close response xml file: ");
 			}
 		}
 		return response;

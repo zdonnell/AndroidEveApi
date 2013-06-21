@@ -3,14 +3,10 @@ package com.zdonnell.androideveapi.core;
 import java.util.Collections;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.zdonnell.androideveapi.EveApi;
 import com.zdonnell.androideveapi.exception.ApiException;
 
 public abstract class AbstractApiParser<E extends ApiResponse> {
-	protected final Logger logger = LoggerFactory.getLogger(getClass());
 	protected final ApiPath path;
 	protected final ApiPage page;
 	protected final int version;

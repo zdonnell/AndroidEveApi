@@ -13,10 +13,10 @@ import java.util.Map.Entry;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
+
+import android.util.Log;
 
 import com.zdonnell.androideveapi.core.AbstractContentHandler;
 import com.zdonnell.androideveapi.core.ApiAuth;
@@ -24,9 +24,7 @@ import com.zdonnell.androideveapi.core.ApiRequest;
 import com.zdonnell.androideveapi.core.ApiResponse;
 import com.zdonnell.androideveapi.exception.ApiException;
 
-public class ApiConnector {
-	private static final Logger LOG = LoggerFactory.getLogger(ApiConnector.class);
-	
+public class ApiConnector {	
 	public static final String EVE_API_URL = "https://api.eveonline.com";
 	private final String baseUrl;
 
@@ -85,7 +83,7 @@ public class ApiConnector {
 				try {
 					wr.close();
 				} catch (IOException e) {
-					LOG.warn("Error closing the stream", e);
+					Log.w("AndroidEveApi", "Error closing the stream");
 				}
 		}
 	}
