@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.zdonnell.androideveapi.misc.ImageProviderTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 1.6 sec
