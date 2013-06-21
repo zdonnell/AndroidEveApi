@@ -3,7 +3,6 @@ package com.zdonnell.androideveapi.link.character;
 import java.util.Set;
 
 import android.content.Context;
-import android.os.AsyncTask;
 
 import com.zdonnell.androideveapi.character.sheet.ApiAttributeEnhancer;
 import com.zdonnell.androideveapi.character.sheet.ApiSkill;
@@ -14,8 +13,7 @@ import com.zdonnell.androideveapi.core.ApiPage;
 import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.exception.ApiException;
 import com.zdonnell.androideveapi.link.APIExceptionCallback;
-import com.zdonnell.androideveapi.link.CacheDatabase;
-import com.zdonnell.androideveapi.link.IApiTask;
+import com.zdonnell.androideveapi.link.APITask;
 import com.zdonnell.androideveapi.link.database.AttributesData;
 import com.zdonnell.androideveapi.link.database.CharacterSheetData;
 import com.zdonnell.androideveapi.link.database.SkillsData;
@@ -26,111 +24,30 @@ import com.zdonnell.androideveapi.link.database.SkillsData;
  * @author Zach
  *
  */
-public class CharacterSheetTask extends AsyncTask<Void, Void, CharacterSheetResponse> implements IApiTask<CharacterSheetResponse>
+public class CharacterSheetTask extends APITask<Void, Void, CharacterSheetResponse>
 {	
-	private CacheDatabase cacheDatabase;
+	final private ApiAuth<?> apiAuth;
 	
-	private APIExceptionCallback<CharacterSheetResponse> callback;
-	private ApiAuth<?> apiAuth;
-	private Context context;
-	
-	private boolean apiExceptionOccured = false;
-	private ApiException exception;
-	
-	private boolean cacheExists = false, cacheValid = false;
-	
-	private CharacterSheetResponse cachedData;
-		
-	/**
-	 * Constructor
-	 * 
-	 * @param callback
-	 * @param apiAuth
-	 * @param context
-	 */
-	public CharacterSheetTask(APIExceptionCallback<CharacterSheetResponse> callback, ApiAuth<?> apiAuth, Context context)
+	public CharacterSheetTask(APIExceptionCallback<CharacterSheetResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
-		this.callback = callback;
-		this.apiAuth = apiAuth;
-		this.context = context;
-		
-		cacheDatabase = new CacheDatabase(context);
-	}
-	
-	@Override
-	protected CharacterSheetResponse doInBackground(Void... params)
-	{
-		int requestHash = apiAuth.hashCode() + requestTypeHash();
-		
-		cacheValid = cacheDatabase.cacheValid(requestHash);
-		cacheExists = cacheDatabase.cacheExists(requestHash);
-				
-		if (cacheValid)
-		{
-			return buildResponseFromDatabase();
-		}
-		else
-		{
-			// The cache is out of date (invalid) but load it anyway while we contact the API server
-			if (cacheExists) 
+		super(callback, context, true, new EveApiInteraction<CharacterSheetResponse>(){
+
+			@Override
+			public CharacterSheetResponse perform() throws ApiException
 			{
-				cachedData = buildResponseFromDatabase();
-				publishProgress();
-			}
-			else callback.updateState(APIExceptionCallback.STATE_CACHED_RESPONSE_NOT_FOUND);
- 	
-			CharacterSheetParser parser = CharacterSheetParser.getInstance();		
-			CharacterSheetResponse response = null;
-						
-	        try 
-	        { 
-	        	response = parser.getResponse(apiAuth);	        	
-	        	cacheDatabase.updateCache(requestHash, response.getCachedUntil());
-	        	
+				CharacterSheetParser parser = CharacterSheetParser.getInstance();		
+				CharacterSheetResponse response = parser.getResponse(apiAuth);;
+		        	
 	        	new CharacterSheetData(context).setCharacterSheet(response);
 	        	new SkillsData(context).storeSkills((int) response.getCharacterID(), response.getSkills());
 	        	new AttributesData(context).setImplants((int) response.getCharacterID(), response.getAttributeEnhancers());
-	        }
-			catch (ApiException e) 
-			{
-				apiExceptionOccured = true;
-				exception = e;
+		        	
+		        return response;
 			}
-	        	        
-	        return response;
-		}
-	}
-	
-	@Override
-	protected void onPostExecute(CharacterSheetResponse response) 
-	{	
-		// We can arrive here one of two ways, if the cache was still valid, or if it was invalid
-		// and a server response was acquired, check which it is.
-		if (cacheValid)
-		{
-			callback.updateState(APIExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_VALID);
-			callback.onUpdate(response);
-		}
-		else
-		{
-			if (apiExceptionOccured) 
-			{
-				callback.updateState(APIExceptionCallback.STATE_SERVER_RESPONSE_FAILED);
-				callback.onError(response, exception);
-			}
-			else 
-			{
-				callback.updateState(APIExceptionCallback.STATE_SERVER_RESPONSE_ACQUIRED);
-				callback.onUpdate(response);
-			}
-		}
-    }
-
-	@Override
-	protected void onProgressUpdate(Void... progress)
-	{		
-		callback.updateState(APIExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_INVALID);
-		callback.onUpdate(cachedData);
+			
+		});
+		
+		this.apiAuth = apiAuth;
 	}
 	
 	public int requestTypeHash() 

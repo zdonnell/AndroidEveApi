@@ -23,6 +23,6 @@ public class Eve
 	
 	public void conqStationsList(APIExceptionCallback<StationListResponse> callback)
 	{
-		new ConquerableStationsTask(callback).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR); 
+		new ConquerableStationsTask(callback, context).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR); 
 	}
 }
