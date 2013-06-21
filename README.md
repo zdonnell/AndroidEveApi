@@ -1,9 +1,9 @@
 AndroidEveApi
 =============
 
-AndroidEveApi is an Android specific implementation of Syte Beimin's [EveApi](https://code.google.com/p/eveapi/)
+AndroidEveApi is an extension of Syte Beimin's [EveApi](https://code.google.com/p/eveapi/) intended for use in Android applications.
 
-AndroidEveApi expands on the functionality of EveApi by handling the caching of of api responses for you.
+For more information on AndroidEveApi, visit the [web page](http://zdonnell.github.io/AndroidEveApi/).
 
 License
 -------------
