@@ -8,18 +8,6 @@
 	<name>AndroidEveApi</name>
 	<description>Parsers for the eve online api for Android</description>
 	<url>https://github.com/zdonnell/AndroidEveApi</url>
-	<distributionManagement>
-		<repository>
-			<id>eveapi.googlecode.com</id>
-			<name>EveAPI Maven Repository</name>
-			<url>svn:https://eveapi.googlecode.com/svn/m2/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>eveapi.googlecode.com</id>
-			<name>EveAPI Maven Repository</name>
-			<url>svn:https://eveapi.googlecode.com/svn/m2/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 	<licenses>
         <license>
             <name>GNU Lesser General Public License v3.0</name>
@@ -50,6 +38,7 @@
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
 			<version>4.1.1.4</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
