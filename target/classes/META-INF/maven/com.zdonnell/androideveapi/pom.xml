@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zdonnell</groupId>
 	<artifactId>androideveapi</artifactId>
-	<version>5.1.3-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<packaging>jar</packaging>
 	<name>AndroidEveApi</name>
 	<description>Parsers for the eve online api for Android</description>
@@ -12,12 +12,12 @@
 		<repository>
 	        <id>github.com/zdonnell/androideveapi</id>
 	        <name>EveAPI Maven Repository</name>
-	        <url>git:https://www.github.com/zdonnell/androideveapi/m2/releases</url>
+	        <url>file://${project.basedir}/m2/releases</url>
 		</repository>
 		<snapshotRepository>
-	        <id>egithub.com/zdonnell/eden</id>
+	        <id>github.com/zdonnell/eden</id>
 	        <name>EveAPI Maven Repository</name>
-	        <url>git:https://www.github.com/zdonnell/androideveapi/m2/snapshots</url>
+	        <url>file://${project.basedir}/m2/snapshots</url>
 		</snapshotRepository>
         </distributionManagement>
 	<licenses>
