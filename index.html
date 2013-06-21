@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Androideveapi by zdonnell</title>
+    <title>AndroidEveApi by zdonnell</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,7 +15,7 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Androideveapi</h1>
+        <h1>AndroidEveApi</h1>
         <p></p>
 
         <p class="view"><a href="https://github.com/zdonnell/AndroidEveApi">View the Project on GitHub <small>zdonnell/AndroidEveApi</small></a></p>
@@ -34,6 +34,26 @@
 <p>AndroidEveApi is an Android specific implementation of Syte Beimin's <a href="https://code.google.com/p/eveapi/">EveApi</a></p>
 
 <p>AndroidEveApi expands on the functionality of EveApi by handling the caching of of api responses for you.</p>
+
+<h2>
+<a name="use" class="anchor" href="#use"><span class="octicon octicon-link"></span></a>Use</h2>
+
+<p>All HTTP requests in Android must be completed on a separate thread, to solve this you pass AndroidEveApi objects a callback that will receive the ApiResponse when it's available.</p>
+
+<div class="highlight"><pre><span class="n">ApiAuth</span> <span class="n">apiAuth</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiAuthorization</span><span class="o">(</span><span class="n">keyID</span><span class="o">,</span> <span class="n">vCode</span><span class="o">);</span>
+<span class="k">new</span> <span class="nf">Account</span><span class="o">(</span><span class="n">apiAuth</span><span class="o">,</span> <span class="n">context</span><span class="o">).</span><span class="na">getCharacters</span><span class="o">(</span><span class="k">new</span> <span class="n">APIExceptionCallback</span><span class="o">&lt;</span><span class="n">CharactersResponse</span><span class="o">&gt;()</span> 
+<span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onUpdate</span><span class="o">(</span><span class="n">CharactersResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Code to use the resposne</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onError</span><span class="o">(</span><span class="n">CharactersResponse</span> <span class="n">response</span><span class="o">,</span> <span class="n">ApiException</span> <span class="n">exception</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Code to run if AndroidEveApi encountered and error returning the response</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
 
 <h2>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
