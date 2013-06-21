@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.zdonnell.androideveapi.character.mail.MailBodiesParserTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.131 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.134 sec
