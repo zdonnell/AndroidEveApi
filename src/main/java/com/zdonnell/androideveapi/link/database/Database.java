@@ -136,7 +136,9 @@ public class Database {
 				+ CharacterSheetData.COL_CORP_NAME + " text,"
 				+ CharacterSheetData.COL_CORP_ID + " integer,"
 				+ CharacterSheetData.COL_ALLIANCE_ID + " integer,"
-				+ CharacterSheetData.COL_ALLIANCE + " text,"		
+				+ CharacterSheetData.COL_ALLIANCE + " text,"
+				+ CharacterSheetData.COL_CLONE_NAME + " text,"		
+				+ CharacterSheetData.COL_CLONE_SP + " integer,"		
 				+ CharacterSheetData.COL_BALANCE + " real,"	
 				
 				+ CharacterSheetData.COL_INTELLIGENCE + " integer,"

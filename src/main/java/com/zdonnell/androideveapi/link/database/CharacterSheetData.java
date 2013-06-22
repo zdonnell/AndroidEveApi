@@ -28,6 +28,8 @@ public class CharacterSheetData {
 	public final static String COL_CORP_ID = "character_corpid";
 	public final static String COL_ALLIANCE_ID = "character_allianceid";
 	public final static String COL_ALLIANCE = "character_alliance";
+	public final static String COL_CLONE_NAME = "character_clonename";
+	public final static String COL_CLONE_SP = "character_clonesp";	
 	public final static String COL_BALANCE = "character_balance";
 	
 	public final static String COL_INTELLIGENCE = "character_intel";
@@ -66,6 +68,8 @@ public class CharacterSheetData {
 		insertValues.put(COL_CORP_ID, characterSheet.getCorporationID());
 		insertValues.put(COL_ALLIANCE_ID, characterSheet.getAllianceID());
 		insertValues.put(COL_ALLIANCE, characterSheet.getAllianceName());
+		insertValues.put(COL_CLONE_NAME, characterSheet.getCloneName());
+		insertValues.put(COL_CLONE_SP, characterSheet.getCloneSkillPoints());
 		insertValues.put(COL_BALANCE, characterSheet.getBalance());
 		
 		insertValues.put(COL_INTELLIGENCE, characterSheet.getIntelligence());
@@ -104,6 +108,8 @@ public class CharacterSheetData {
 			characterSheet.setCorporationID(c.getLong(c.getColumnIndex(COL_CORP_ID)));
 			characterSheet.setAllianceID(c.getLong(c.getColumnIndex(COL_ALLIANCE_ID)));
 			characterSheet.setAllianceName(c.getString(c.getColumnIndex(COL_ALLIANCE)));
+			characterSheet.setCloneName(c.getString(c.getColumnIndex(COL_CLONE_NAME)));
+			characterSheet.setCloneSkillPoints(c.getLong(c.getColumnIndex(COL_CLONE_SP)));
 			characterSheet.setBalance(c.getDouble(c.getColumnIndex(COL_BALANCE)));
 			
 			characterSheet.setIntelligence(c.getInt(c.getColumnIndex(COL_INTELLIGENCE)));
