@@ -1,6 +1,5 @@
 package com.zdonnell.androideveapi.link.database;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import android.content.ContentValues;
@@ -90,13 +89,13 @@ public class CharacterInfoData {
 			characterInfo.setShipTypeID(c.getInt(c.getColumnIndex(COL_SHIP_TYPEID)));
 			
 			try { characterInfo.setCorporationDate(formatter.parse(c.getString(c.getColumnIndex(COL_CORP_DATE)))); } 
-			catch (ParseException e) { e.printStackTrace(); }
+			catch (Exception e) { e.printStackTrace(); }
 			
 			characterInfo.setAllianceID(c.getLong(c.getColumnIndex(COL_ALLIANCE_ID)));
 			characterInfo.setAlliance(c.getString(c.getColumnIndex(COL_ALLIANCE)));
 			
 			try { characterInfo.setAllianceDate(formatter.parse(c.getString(c.getColumnIndex(COL_ALLIANCE_DATE)))); } 
-			catch (ParseException e) { e.printStackTrace(); }
+			catch (Exception e) { e.printStackTrace(); }
 			
 			characterInfo.setLastKnownLocation(c.getString(c.getColumnIndex(COL_LAST_KNOWN_LOC)));
 			characterInfo.setSecurityStatus(c.getDouble(c.getColumnIndex(COL_SEC_STATUS)));
