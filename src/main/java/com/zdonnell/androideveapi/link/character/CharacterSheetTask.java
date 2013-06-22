@@ -25,12 +25,10 @@ import com.zdonnell.androideveapi.link.database.SkillsData;
  *
  */
 public class CharacterSheetTask extends APITask<Void, Void, CharacterSheetResponse>
-{	
-	final private ApiAuth<?> apiAuth;
-	
+{		
 	public CharacterSheetTask(APIExceptionCallback<CharacterSheetResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
-		super(callback, context, true, new EveApiInteraction<CharacterSheetResponse>(){
+		super(callback, context, true, apiAuth, new EveApiInteraction<CharacterSheetResponse>(){
 
 			@Override
 			public CharacterSheetResponse perform() throws ApiException
@@ -46,8 +44,6 @@ public class CharacterSheetTask extends APITask<Void, Void, CharacterSheetRespon
 			}
 			
 		});
-		
-		this.apiAuth = apiAuth;
 	}
 	
 	public int requestTypeHash() 

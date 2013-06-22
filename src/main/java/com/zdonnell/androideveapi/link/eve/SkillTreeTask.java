@@ -23,7 +23,7 @@ public class SkillTreeTask extends APITask<Void, Void, SkillTreeResponse>
 {		
 	public SkillTreeTask(APIExceptionCallback<SkillTreeResponse> callback, final Context context)
 	{						
-		super(callback, context, true, new EveApiInteraction<SkillTreeResponse>()
+		super(callback, context, true, null, new EveApiInteraction<SkillTreeResponse>()
 		{
 			@Override
 			public SkillTreeResponse perform() throws ApiException 

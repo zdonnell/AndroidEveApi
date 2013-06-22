@@ -12,7 +12,7 @@ public class ServerStatusTask extends APITask<Void, Void, ServerStatusResponse>
 {
 	public ServerStatusTask(APIExceptionCallback<ServerStatusResponse> callback, Context context)
 	{
-		super(callback, context, false, new EveApiInteraction<ServerStatusResponse>()
+		super(callback, context, false, null, new EveApiInteraction<ServerStatusResponse>()
 		{
 			@Override
 			public ServerStatusResponse perform() throws ApiException 

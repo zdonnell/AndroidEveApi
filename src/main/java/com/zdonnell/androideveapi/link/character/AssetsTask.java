@@ -22,12 +22,10 @@ import com.zdonnell.androideveapi.shared.assetlist.EveAsset;
  *
  */
 public class AssetsTask extends APITask<Void, Void, AssetListResponse>
-{		
-	final ApiAuth<?> apiAuth;
-	
+{			
 	public AssetsTask(APIExceptionCallback<AssetListResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
-		super(callback, context, true, new EveApiInteraction<AssetListResponse>()
+		super(callback, context, true, apiAuth, new EveApiInteraction<AssetListResponse>()
 		{
 			@Override
 			public AssetListResponse perform() throws ApiException 
@@ -40,8 +38,6 @@ public class AssetsTask extends APITask<Void, Void, AssetListResponse>
 		        return response;
 			}
 		});
-		
-		this.apiAuth = apiAuth;
 	}
 	
 	@Override

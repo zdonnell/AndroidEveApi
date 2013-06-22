@@ -12,7 +12,7 @@ public class ConquerableStationsTask extends APITask<Void, Void, StationListResp
 {		
 	public ConquerableStationsTask(APIExceptionCallback<StationListResponse> callback, final Context context)
 	{
-		super(callback, context, false, new EveApiInteraction<StationListResponse>()
+		super(callback, context, false, null, new EveApiInteraction<StationListResponse>()
 		{
 			@Override
 			public StationListResponse perform() throws ApiException 

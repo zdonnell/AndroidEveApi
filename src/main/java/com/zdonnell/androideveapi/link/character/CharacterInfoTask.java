@@ -19,12 +19,10 @@ import com.zdonnell.androideveapi.link.database.CharacterInfoData;
  *
  */
 public class CharacterInfoTask extends APITask<Void, Void, CharacterInfoResponse>
-{	
-	final private ApiAuth<?> apiAuth;
-	
+{		
 	public CharacterInfoTask(APIExceptionCallback<CharacterInfoResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
-		super(callback, context, true, new EveApiInteraction<CharacterInfoResponse>()
+		super(callback, context, true, apiAuth, new EveApiInteraction<CharacterInfoResponse>()
 		{
 			@Override
 			public CharacterInfoResponse perform() throws ApiException 
@@ -37,8 +35,6 @@ public class CharacterInfoTask extends APITask<Void, Void, CharacterInfoResponse
 		        return response;
 			}
 		});
-		
-		this.apiAuth = apiAuth;
 	}
 	
 	@Override

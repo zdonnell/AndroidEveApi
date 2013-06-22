@@ -3,6 +3,7 @@ package com.zdonnell.androideveapi.link;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiResponse;
 import com.zdonnell.androideveapi.exception.ApiException;
 
@@ -68,12 +69,18 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 	 */
 	final private boolean useCache;
 	
-	public APITask(APIExceptionCallback<Response> callback, Context context, boolean useCache, EveApiInteraction<Response> apiInteraction)
+	/**
+	 * Reference to the apiAuthorization used
+	 */
+	protected final ApiAuth<?> apiAuth;
+	
+	public APITask(APIExceptionCallback<Response> callback, Context context, boolean useCache, ApiAuth<?> apiAuth, EveApiInteraction<Response> apiInteraction)
 	{
 		this.callback = callback;
 		this.apiInteraction = apiInteraction;
 		this.useCache = useCache;
 		this.context = context;
+		this.apiAuth = apiAuth;
 		
 		this.cacheDatabase = new CacheDatabase(context);
 	}
@@ -83,6 +90,7 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 	protected Response doInBackground(ExecuteParameter... params) 
 	{
 		int requestHash = requestTypeHash();
+		if (apiAuth != null) requestHash += apiAuth.hashCode();
 		
 		// cacheExists and cacheValid are only true if we actually want to use cache
 		cacheValid = useCache && cacheDatabase.cacheValid(requestHash);

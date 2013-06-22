@@ -22,12 +22,10 @@ import com.zdonnell.androideveapi.link.database.SkillQueueData;
  *
  */
 public class SkillQueueTask extends APITask<Void, Void, SkillQueueResponse>
-{
-	final private ApiAuth<?> apiAuth;
-	
+{	
 	public SkillQueueTask(APIExceptionCallback<SkillQueueResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
-		super(callback, context, true, new EveApiInteraction<SkillQueueResponse>(){
+		super(callback, context, true, apiAuth, new EveApiInteraction<SkillQueueResponse>(){
 
 			@Override
 			public SkillQueueResponse perform() throws ApiException
@@ -41,8 +39,6 @@ public class SkillQueueTask extends APITask<Void, Void, SkillQueueResponse>
 			}
 			
 		});
-		
-		this.apiAuth = apiAuth;
 	}
 	
 	public int requestTypeHash() 

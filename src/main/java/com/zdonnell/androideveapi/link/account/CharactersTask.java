@@ -13,7 +13,7 @@ public class CharactersTask extends APITask<Void, Void, CharactersResponse>
 {
 	public CharactersTask(APIExceptionCallback<CharactersResponse> callback, final Context context, final ApiAuth<?> apiAuth)
 	{
-		super(callback, context, false, new EveApiInteraction<CharactersResponse>()
+		super(callback, context, false, apiAuth, new EveApiInteraction<CharactersResponse>()
 		{
 			@Override
 			public CharactersResponse perform() throws ApiException 
