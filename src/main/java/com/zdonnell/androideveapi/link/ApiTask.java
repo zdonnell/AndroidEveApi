@@ -16,7 +16,7 @@ import com.zdonnell.androideveapi.exception.ApiException;
  * @param <ProgressParameter>
  * @param <Response>
  */
-public abstract class APITask<ExecuteParameter, ProgressParameter, Response extends ApiResponse> extends AsyncTask<ExecuteParameter, ProgressParameter, Response>
+public abstract class ApiTask<ExecuteParameter, ProgressParameter, Response extends ApiResponse> extends AsyncTask<ExecuteParameter, ProgressParameter, Response>
 {
 	/**
 	 * True if the {@link CacheDatabase} has an entry for the given Response hash and {@link #useCache} is true.
@@ -32,7 +32,7 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 	/**
 	 * Callback to provide the the acquired response to.
 	 */
-	final private APIExceptionCallback<Response> callback;
+	final private ApiExceptionCallback<Response> callback;
 	
 	/**
 	 * Code to run to generate the response, provided by subclass
@@ -74,7 +74,7 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 	 */
 	protected final ApiAuth<?> apiAuth;
 	
-	public APITask(APIExceptionCallback<Response> callback, Context context, boolean useCache, ApiAuth<?> apiAuth, EveApiInteraction<Response> apiInteraction)
+	public ApiTask(ApiExceptionCallback<Response> callback, Context context, boolean useCache, ApiAuth<?> apiAuth, EveApiInteraction<Response> apiInteraction)
 	{
 		this.callback = callback;
 		this.apiInteraction = apiInteraction;
@@ -108,7 +108,7 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 				cachedData = buildResponseFromDatabase();
 				publishProgress();
 			}
-			else callback.updateState(APIExceptionCallback.STATE_CACHED_RESPONSE_NOT_FOUND);
+			else callback.updateState(ApiExceptionCallback.STATE_CACHED_RESPONSE_NOT_FOUND);
 			
 			Response response = null;
 			
@@ -130,7 +130,7 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 	@Override
 	protected void onProgressUpdate(ProgressParameter... progress)
 	{		
-		callback.updateState(APIExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_INVALID);
+		callback.updateState(ApiExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_INVALID);
 		callback.onUpdate(cachedData);
 	}
 	
@@ -141,19 +141,19 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 		// and a server response was acquired, check which it is.
 		if (cacheValid)
 		{
-			callback.updateState(APIExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_VALID);
+			callback.updateState(ApiExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_VALID);
 			callback.onUpdate(response);
 		}
 		else
 		{
 			if (apiExceptionOccured) 
 			{
-				callback.updateState(APIExceptionCallback.STATE_SERVER_RESPONSE_FAILED);
+				callback.updateState(ApiExceptionCallback.STATE_SERVER_RESPONSE_FAILED);
 				callback.onError(response, exception);
 			}
 			else 
 			{
-				callback.updateState(APIExceptionCallback.STATE_SERVER_RESPONSE_ACQUIRED);
+				callback.updateState(ApiExceptionCallback.STATE_SERVER_RESPONSE_ACQUIRED);
 				callback.onUpdate(response);
 			}
 		}
@@ -180,7 +180,7 @@ public abstract class APITask<ExecuteParameter, ProgressParameter, Response exte
 	 * @author Zach
 	 *
 	 * @param <Response>
-	 * @see {@link APITask#apiInteraction}
+	 * @see {@link ApiTask#apiInteraction}
 	 */
 	protected interface EveApiInteraction<Response> 
 	{

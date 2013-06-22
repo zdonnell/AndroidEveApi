@@ -11,7 +11,7 @@ import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiPage;
 import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.exception.ApiException;
-import com.zdonnell.androideveapi.link.APIExceptionCallback;
+import com.zdonnell.androideveapi.link.ApiExceptionCallback;
 import com.zdonnell.androideveapi.link.IApiTask;
 import com.zdonnell.androideveapi.link.database.WalletJournalData;
 import com.zdonnell.androideveapi.shared.wallet.journal.ApiJournalEntry;
@@ -25,7 +25,7 @@ import com.zdonnell.androideveapi.shared.wallet.journal.WalletJournalResponse;
  */
 public class WalletJournalTask extends AsyncTask<Void, Void, WalletJournalResponse> implements IApiTask<WalletJournalResponse>
 {		
-	private APIExceptionCallback<WalletJournalResponse> callback;
+	private ApiExceptionCallback<WalletJournalResponse> callback;
 	private ApiAuth<?> apiAuth;
 	private Context context;
 	
@@ -44,13 +44,13 @@ public class WalletJournalTask extends AsyncTask<Void, Void, WalletJournalRespon
 	 * @param apiAuth
 	 * @param context
 	 */
-	public WalletJournalTask(APIExceptionCallback<WalletJournalResponse> callback, ApiAuth<?> apiAuth, Context context)
+	public WalletJournalTask(ApiExceptionCallback<WalletJournalResponse> callback, ApiAuth<?> apiAuth, Context context)
 	{
 		this.callback = callback;
 		this.apiAuth = apiAuth;
 		this.context = context;
 		
-		callback.updateState(APIExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_INVALID);
+		callback.updateState(ApiExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_INVALID);
 		journalDatabase = new WalletJournalData(context);
 	}
 	
@@ -131,12 +131,12 @@ public class WalletJournalTask extends AsyncTask<Void, Void, WalletJournalRespon
 	{	
 		if (apiExceptionOccured)
 		{
-			callback.updateState(APIExceptionCallback.STATE_SERVER_RESPONSE_FAILED);
+			callback.updateState(ApiExceptionCallback.STATE_SERVER_RESPONSE_FAILED);
 			callback.onError(cachedData, exception);
 		}
 		else
 		{
-			callback.updateState(APIExceptionCallback.STATE_SERVER_RESPONSE_ACQUIRED);
+			callback.updateState(ApiExceptionCallback.STATE_SERVER_RESPONSE_ACQUIRED);
 			callback.onUpdate(cachedData);
 		}
     }

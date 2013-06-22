@@ -1,17 +1,15 @@
 package com.zdonnell.androideveapi.link;
 
+import com.zdonnell.androideveapi.exception.ApiException;
 
 /**
- * Extend this class to provide instructions for an {@link APIObject} request
- * to call when finished
  * 
- * @author zachd
+ * @author zach
  *
- * @param <T> The Generic type the onUpdate method should take and provide to the callback
- * code
+ * @param <T>
  */
-public abstract class APICallback<T> 
-{
+public abstract class ApiExceptionCallback<T> {
+
 	public static final int STATE_CACHED_RESPONSE_ACQUIRED_VALID = 0;
 	public static final int STATE_CACHED_RESPONSE_ACQUIRED_INVALID = 1;
 	public static final int STATE_CACHED_RESPONSE_NOT_FOUND = 2;
@@ -26,13 +24,15 @@ public abstract class APICallback<T>
 	 */
 	private int stateInt;
 	
-	public APICallback(ILoadingActivity activity)
+	/**
+	 * @param activity {@link IloadingActivity} to give updates on the loading status.  Can be null if your activity does
+	 * not implement ILoadingActivity.
+	 */
+	public ApiExceptionCallback(ILoadingActivity activity)
 	{
 		requestingActivity = activity;
 		if (activity != null) initializeCallback();
 	}
-	
-	public abstract void onUpdate(T updatedData);
 	
 	private void initializeCallback()
 	{
@@ -77,4 +77,8 @@ public abstract class APICallback<T>
 	{
 		if (stateInt == 0) requestingActivity.loadingFinished(dataError);
 	}
+	
+	public abstract void onUpdate(T response);
+
+	public abstract void onError(T response, ApiException exception);	
 }

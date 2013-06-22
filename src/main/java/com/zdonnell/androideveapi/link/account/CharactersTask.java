@@ -6,12 +6,12 @@ import com.zdonnell.androideveapi.account.characters.CharactersParser;
 import com.zdonnell.androideveapi.account.characters.CharactersResponse;
 import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.exception.ApiException;
-import com.zdonnell.androideveapi.link.APIExceptionCallback;
-import com.zdonnell.androideveapi.link.APITask;
+import com.zdonnell.androideveapi.link.ApiExceptionCallback;
+import com.zdonnell.androideveapi.link.ApiTask;
 
-public class CharactersTask extends APITask<Void, Void, CharactersResponse>
+public class CharactersTask extends ApiTask<Void, Void, CharactersResponse>
 {
-	public CharactersTask(APIExceptionCallback<CharactersResponse> callback, final Context context, final ApiAuth<?> apiAuth)
+	public CharactersTask(ApiExceptionCallback<CharactersResponse> callback, final Context context, final ApiAuth<?> apiAuth)
 	{
 		super(callback, context, false, apiAuth, new EveApiInteraction<CharactersResponse>()
 		{

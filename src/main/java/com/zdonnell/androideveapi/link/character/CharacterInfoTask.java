@@ -8,8 +8,8 @@ import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.eve.character.CharacterInfoParser;
 import com.zdonnell.androideveapi.eve.character.CharacterInfoResponse;
 import com.zdonnell.androideveapi.exception.ApiException;
-import com.zdonnell.androideveapi.link.APIExceptionCallback;
-import com.zdonnell.androideveapi.link.APITask;
+import com.zdonnell.androideveapi.link.ApiExceptionCallback;
+import com.zdonnell.androideveapi.link.ApiTask;
 import com.zdonnell.androideveapi.link.database.CharacterInfoData;
 
 /**
@@ -18,9 +18,9 @@ import com.zdonnell.androideveapi.link.database.CharacterInfoData;
  * @author Zach
  *
  */
-public class CharacterInfoTask extends APITask<Void, Void, CharacterInfoResponse>
+public class CharacterInfoTask extends ApiTask<Void, Void, CharacterInfoResponse>
 {		
-	public CharacterInfoTask(APIExceptionCallback<CharacterInfoResponse> callback, final ApiAuth<?> apiAuth, final Context context)
+	public CharacterInfoTask(ApiExceptionCallback<CharacterInfoResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
 		super(callback, context, true, apiAuth, new EveApiInteraction<CharacterInfoResponse>()
 		{

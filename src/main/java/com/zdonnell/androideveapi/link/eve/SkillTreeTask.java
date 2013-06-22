@@ -10,8 +10,8 @@ import com.zdonnell.androideveapi.eve.skilltree.ApiSkillGroup;
 import com.zdonnell.androideveapi.eve.skilltree.SkillTreeParser;
 import com.zdonnell.androideveapi.eve.skilltree.SkillTreeResponse;
 import com.zdonnell.androideveapi.exception.ApiException;
-import com.zdonnell.androideveapi.link.APIExceptionCallback;
-import com.zdonnell.androideveapi.link.APITask;
+import com.zdonnell.androideveapi.link.ApiExceptionCallback;
+import com.zdonnell.androideveapi.link.ApiTask;
 import com.zdonnell.androideveapi.link.database.SkillTreeData;
 
 /**
@@ -19,9 +19,9 @@ import com.zdonnell.androideveapi.link.database.SkillTreeData;
  * @author Zach
  *
  */
-public class SkillTreeTask extends APITask<Void, Void, SkillTreeResponse>
+public class SkillTreeTask extends ApiTask<Void, Void, SkillTreeResponse>
 {		
-	public SkillTreeTask(APIExceptionCallback<SkillTreeResponse> callback, final Context context)
+	public SkillTreeTask(ApiExceptionCallback<SkillTreeResponse> callback, final Context context)
 	{						
 		super(callback, context, true, null, new EveApiInteraction<SkillTreeResponse>()
 		{

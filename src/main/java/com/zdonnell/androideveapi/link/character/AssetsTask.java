@@ -9,8 +9,8 @@ import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiPage;
 import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.exception.ApiException;
-import com.zdonnell.androideveapi.link.APIExceptionCallback;
-import com.zdonnell.androideveapi.link.APITask;
+import com.zdonnell.androideveapi.link.ApiExceptionCallback;
+import com.zdonnell.androideveapi.link.ApiTask;
 import com.zdonnell.androideveapi.link.database.AssetsData;
 import com.zdonnell.androideveapi.shared.assetlist.AssetListResponse;
 import com.zdonnell.androideveapi.shared.assetlist.EveAsset;
@@ -21,9 +21,9 @@ import com.zdonnell.androideveapi.shared.assetlist.EveAsset;
  * @author Zach
  *
  */
-public class AssetsTask extends APITask<Void, Void, AssetListResponse>
+public class AssetsTask extends ApiTask<Void, Void, AssetListResponse>
 {			
-	public AssetsTask(APIExceptionCallback<AssetListResponse> callback, final ApiAuth<?> apiAuth, final Context context)
+	public AssetsTask(ApiExceptionCallback<AssetListResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
 		super(callback, context, true, apiAuth, new EveApiInteraction<AssetListResponse>()
 		{

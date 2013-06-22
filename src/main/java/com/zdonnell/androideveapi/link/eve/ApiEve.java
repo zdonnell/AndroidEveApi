@@ -5,23 +5,23 @@ import android.os.AsyncTask;
 
 import com.zdonnell.androideveapi.eve.conquerablestationlist.StationListResponse;
 import com.zdonnell.androideveapi.eve.skilltree.SkillTreeResponse;
-import com.zdonnell.androideveapi.link.APIExceptionCallback;
+import com.zdonnell.androideveapi.link.ApiExceptionCallback;
 
-public class Eve 
+public class ApiEve 
 {
 	private Context context;
 	
-	public Eve(Context context)
+	public ApiEve(Context context)
 	{
 		this.context = context;
 	}
 	
-	public void skillTree(APIExceptionCallback<SkillTreeResponse> callback)
+	public void skillTree(ApiExceptionCallback<SkillTreeResponse> callback)
 	{
 		new SkillTreeTask(callback, context).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR); 
 	}
 	
-	public void conqStationsList(APIExceptionCallback<StationListResponse> callback)
+	public void conqStationsList(ApiExceptionCallback<StationListResponse> callback)
 	{
 		new ConquerableStationsTask(callback, context).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR); 
 	}

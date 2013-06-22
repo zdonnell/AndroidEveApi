@@ -12,8 +12,8 @@ import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiPage;
 import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.exception.ApiException;
-import com.zdonnell.androideveapi.link.APIExceptionCallback;
-import com.zdonnell.androideveapi.link.APITask;
+import com.zdonnell.androideveapi.link.ApiExceptionCallback;
+import com.zdonnell.androideveapi.link.ApiTask;
 import com.zdonnell.androideveapi.link.database.AttributesData;
 import com.zdonnell.androideveapi.link.database.CharacterSheetData;
 import com.zdonnell.androideveapi.link.database.SkillsData;
@@ -24,9 +24,9 @@ import com.zdonnell.androideveapi.link.database.SkillsData;
  * @author Zach
  *
  */
-public class CharacterSheetTask extends APITask<Void, Void, CharacterSheetResponse>
+public class CharacterSheetTask extends ApiTask<Void, Void, CharacterSheetResponse>
 {		
-	public CharacterSheetTask(APIExceptionCallback<CharacterSheetResponse> callback, final ApiAuth<?> apiAuth, final Context context)
+	public CharacterSheetTask(ApiExceptionCallback<CharacterSheetResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
 		super(callback, context, true, apiAuth, new EveApiInteraction<CharacterSheetResponse>(){
 
