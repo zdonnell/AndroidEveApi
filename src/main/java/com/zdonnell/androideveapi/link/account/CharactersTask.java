@@ -24,10 +24,4 @@ public class CharactersTask extends ApiTask<Void, Void, CharactersResponse>
 			
 		});
 	}
-
-	@Override
-	protected int requestTypeHash() { return 0; /* no hash needed, not using cache database */ }
-
-	@Override
-	protected CharactersResponse buildResponseFromDatabase() { return null; /* not using cache database */ }
 }

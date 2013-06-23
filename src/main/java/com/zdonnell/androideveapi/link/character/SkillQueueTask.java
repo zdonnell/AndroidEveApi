@@ -11,8 +11,8 @@ import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiPage;
 import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.exception.ApiException;
+import com.zdonnell.androideveapi.link.ApiCachingTask;
 import com.zdonnell.androideveapi.link.ApiExceptionCallback;
-import com.zdonnell.androideveapi.link.ApiTask;
 import com.zdonnell.androideveapi.link.database.SkillQueueData;
 
 /**
@@ -21,15 +21,11 @@ import com.zdonnell.androideveapi.link.database.SkillQueueData;
  * @author Zach
  *
  */
-public class SkillQueueTask extends ApiTask<Void, Void, SkillQueueResponse>
-{	
-	public SkillQueueTask(ApiExceptionCallback<SkillQueueResponse> callback, final ApiAuth<?> apiAuth, final Context context)
-	{
-		super(callback, context, true, apiAuth, new EveApiInteraction<SkillQueueResponse>(){
-
+public class SkillQueueTask extends ApiCachingTask<Void, Void, SkillQueueResponse> {	
+	public SkillQueueTask(ApiExceptionCallback<SkillQueueResponse> callback, final ApiAuth<?> apiAuth, final Context context) {
+		super(callback, context, true, apiAuth, new EveApiInteraction<SkillQueueResponse>(){ 
 			@Override
-			public SkillQueueResponse perform() throws ApiException
-			{
+			public SkillQueueResponse perform() throws ApiException {
 				SkillQueueParser parser = SkillQueueParser.getInstance();		
 				SkillQueueResponse response = parser.getResponse(apiAuth);
 	        	
@@ -37,17 +33,16 @@ public class SkillQueueTask extends ApiTask<Void, Void, SkillQueueResponse>
 		        	
 		        return response;
 			}
-			
 		});
 	}
 	
-	public int requestTypeHash() 
-	{
+	@Override
+	public int requestTypeHash() {
 		return ApiPath.CHARACTER.getPath().concat(ApiPage.SKILL_QUEUE.getPage()).hashCode();
 	}
 
-	public SkillQueueResponse buildResponseFromDatabase() 
-	{
+	@Override
+	public SkillQueueResponse buildResponseFromDatabase() {
 		SkillQueueResponse response = new SkillQueueResponse();
 		
 		SkillQueueData skillQueueData = new SkillQueueData(context);

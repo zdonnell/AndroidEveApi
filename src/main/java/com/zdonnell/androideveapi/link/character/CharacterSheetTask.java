@@ -12,8 +12,8 @@ import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiPage;
 import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.exception.ApiException;
+import com.zdonnell.androideveapi.link.ApiCachingTask;
 import com.zdonnell.androideveapi.link.ApiExceptionCallback;
-import com.zdonnell.androideveapi.link.ApiTask;
 import com.zdonnell.androideveapi.link.database.AttributesData;
 import com.zdonnell.androideveapi.link.database.CharacterSheetData;
 import com.zdonnell.androideveapi.link.database.SkillsData;
@@ -24,7 +24,7 @@ import com.zdonnell.androideveapi.link.database.SkillsData;
  * @author Zach
  *
  */
-public class CharacterSheetTask extends ApiTask<Void, Void, CharacterSheetResponse>
+public class CharacterSheetTask extends ApiCachingTask<Void, Void, CharacterSheetResponse>
 {		
 	public CharacterSheetTask(ApiExceptionCallback<CharacterSheetResponse> callback, final ApiAuth<?> apiAuth, final Context context)
 	{
@@ -46,11 +46,13 @@ public class CharacterSheetTask extends ApiTask<Void, Void, CharacterSheetRespon
 		});
 	}
 	
+	@Override
 	public int requestTypeHash() 
 	{
 		return ApiPath.CHARACTER.getPath().concat(ApiPage.CHARACTER_SHEET.getPage()).hashCode();
 	}
 
+	@Override
 	public CharacterSheetResponse buildResponseFromDatabase() 
 	{
 		CharacterSheetResponse response = new CharacterSheetData(context).getCharacterSheet(apiAuth.getCharacterID().intValue());

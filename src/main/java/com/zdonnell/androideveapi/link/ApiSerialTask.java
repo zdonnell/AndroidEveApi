@@ -1,0 +1,114 @@
+package com.zdonnell.androideveapi.link;
+
+import android.content.Context;
+import android.os.AsyncTask;
+
+import com.zdonnell.androideveapi.core.ApiAuth;
+import com.zdonnell.androideveapi.core.ApiListResponse;
+import com.zdonnell.androideveapi.exception.ApiException;
+
+/**
+ * Base AsyncTask for acquiring API Data
+ * 
+ * @author Zach
+ *
+ * @param <ExecuteParameter>
+ * @param <ProgressParameter>
+ * @param <Response>
+ */
+public abstract class ApiSerialTask<ExecuteParameter, ProgressParameter, Response extends ApiListResponse<?>> extends AsyncTask<ExecuteParameter, ProgressParameter, Response> {
+	/**
+	 * Callback to provide the the acquired response to.
+	 */
+	protected final ApiExceptionCallback<Response> callback;
+	
+	/**
+	 * Flags whether an exception occurred when the {@link #apiInteraction} was run
+	 */
+	private boolean apiExceptionOccured = false;
+	
+	/**
+	 * Stores the ApiException if one occurs in {@link #apiInteraction}
+	 */
+	private ApiException exception;
+	
+	/**
+	 * Application context
+	 */
+	final protected Context context;
+	
+	/**
+	 * Reference to the apiAuthorization used
+	 */
+	protected final ApiAuth<?> apiAuth;
+	
+	/**
+	 * Number of rows to grab each iteration.
+	 */
+	protected final int batchSize;
+	
+	public ApiSerialTask(ApiExceptionCallback<Response> callback, Context context, ApiAuth<?> apiAuth, int batchSize) {
+		this.callback = callback;
+		this.context = context;
+		this.apiAuth = apiAuth;
+		this.batchSize = batchSize;
+		
+		callback.updateState(ApiExceptionCallback.STATE_CACHED_RESPONSE_ACQUIRED_INVALID);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	protected Response doInBackground(ExecuteParameter... params) 
+	{	
+		Response finalResponse = null;
+		long newestRefID = getNewestRefID();
+		
+		// There are at least some entries for this character, update the UI
+		// with the old stuff while we wait for the new to load from the server
+		if (newestRefID != 0) {
+			finalResponse = buildResponseFromDatabase();
+			publishProgress();
+        	
+			try { 	  
+				checkForNewerEntries(finalResponse, newestRefID);
+	        } catch (ApiException e) {
+				apiExceptionOccured = true;
+				exception = e;
+			}
+		} else { // There are no existing journal entries, start from scratch and request all available journal entries
+	        try { 	        	
+	        	finalResponse = getAllEntries();
+	        } catch (ApiException e) {
+				apiExceptionOccured = true;
+				exception = e;
+			}
+		}
+		
+        return finalResponse;
+	}
+	
+	@Override
+	protected void onPostExecute(Response response) 
+	{
+		if (apiExceptionOccured) {
+			callback.updateState(ApiExceptionCallback.STATE_SERVER_RESPONSE_FAILED);
+			callback.onError(response, exception);
+		} else {
+			callback.updateState(ApiExceptionCallback.STATE_SERVER_RESPONSE_ACQUIRED);
+			callback.onUpdate(response);
+		}
+    }
+	
+	protected abstract long getNewestRefID();
+	
+	/**
+	 * Subclasses implement this to provide a Response built from the database
+	 * 
+	 * @return
+	 */
+	protected abstract Response buildResponseFromDatabase();
+	
+	protected abstract void checkForNewerEntries(Response finalResponse, long newestRefID) throws ApiException;
+	
+	protected abstract Response getAllEntries() throws ApiException;
+}

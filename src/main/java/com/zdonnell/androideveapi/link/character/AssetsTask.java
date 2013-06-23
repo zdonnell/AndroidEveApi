@@ -9,8 +9,8 @@ import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiPage;
 import com.zdonnell.androideveapi.core.ApiPath;
 import com.zdonnell.androideveapi.exception.ApiException;
+import com.zdonnell.androideveapi.link.ApiCachingTask;
 import com.zdonnell.androideveapi.link.ApiExceptionCallback;
-import com.zdonnell.androideveapi.link.ApiTask;
 import com.zdonnell.androideveapi.link.database.AssetsData;
 import com.zdonnell.androideveapi.shared.assetlist.AssetListResponse;
 import com.zdonnell.androideveapi.shared.assetlist.EveAsset;
@@ -21,15 +21,11 @@ import com.zdonnell.androideveapi.shared.assetlist.EveAsset;
  * @author Zach
  *
  */
-public class AssetsTask extends ApiTask<Void, Void, AssetListResponse>
-{			
-	public AssetsTask(ApiExceptionCallback<AssetListResponse> callback, final ApiAuth<?> apiAuth, final Context context)
-	{
-		super(callback, context, true, apiAuth, new EveApiInteraction<AssetListResponse>()
-		{
+public class AssetsTask extends ApiCachingTask<Void, Void, AssetListResponse> {			
+	public AssetsTask(ApiExceptionCallback<AssetListResponse> callback, final ApiAuth<?> apiAuth, final Context context) {
+		super(callback, context, true, apiAuth, new EveApiInteraction<AssetListResponse>() {
 			@Override
-			public AssetListResponse perform() throws ApiException 
-			{
+			public AssetListResponse perform() throws ApiException {
 				AssetListParser parser = AssetListParser.getInstance();		
 				AssetListResponse response = parser.getResponse(apiAuth);
  		        	
@@ -41,14 +37,12 @@ public class AssetsTask extends ApiTask<Void, Void, AssetListResponse>
 	}
 	
 	@Override
-	public int requestTypeHash() 
-	{
+	public int requestTypeHash() {
 		return ApiPath.CHARACTER.getPath().concat(ApiPage.ASSET_LIST.getPage()).hashCode();
 	}
 
 	@Override
-	public AssetListResponse buildResponseFromDatabase() 
-	{		
+	public AssetListResponse buildResponseFromDatabase() {		
 		AssetListResponse response = new AssetListResponse();
 		
 		Collection<EveAsset<EveAsset<?>>> assets = new AssetsData(context).getAssets(apiAuth.getCharacterID().intValue());
