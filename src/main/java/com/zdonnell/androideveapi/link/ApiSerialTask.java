@@ -47,6 +47,11 @@ public abstract class ApiSerialTask<ExecuteParameter, ProgressParameter, Respons
 	 */
 	protected final int batchSize;
 	
+	/**
+	 * Response that will ultimately store the entire set of entries
+	 */
+	private Response finalResponse;
+	
 	public ApiSerialTask(ApiExceptionCallback<Response> callback, Context context, ApiAuth<?> apiAuth, int batchSize) {
 		this.callback = callback;
 		this.context = context;
@@ -58,9 +63,7 @@ public abstract class ApiSerialTask<ExecuteParameter, ProgressParameter, Respons
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Response doInBackground(ExecuteParameter... params) 
-	{	
-		Response finalResponse = null;
+	protected Response doInBackground(ExecuteParameter... params) {	
 		long newestRefID = getNewestRefID();
 		
 		// There are at least some entries for this character, update the UI
@@ -85,6 +88,11 @@ public abstract class ApiSerialTask<ExecuteParameter, ProgressParameter, Respons
 		}
 		
         return finalResponse;
+	}
+	
+	@Override
+	protected void onProgressUpdate(ProgressParameter... params) {
+		callback.onUpdate(finalResponse);
 	}
 	
 	@Override
