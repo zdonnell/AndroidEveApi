@@ -6,7 +6,7 @@ import com.zdonnell.androideveapi.core.ApiAuth;
 import com.zdonnell.androideveapi.core.ApiResponse;
 
 /**
- * Base AsyncTask for acquiring API Data
+ * Base class for Tasks that need to maintain a cache of the ApiResponse.
  * 
  * @author Zach
  *

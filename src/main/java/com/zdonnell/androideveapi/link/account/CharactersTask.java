@@ -15,7 +15,6 @@ public class CharactersTask extends ApiTask<Void, Void, CharactersResponse>
 	{
 		super(callback, context, false, apiAuth, new EveApiInteraction<CharactersResponse>()
 		{
-			@Override
 			public CharactersResponse perform() throws ApiException 
 			{
 				CharactersParser parser = CharactersParser.getInstance();		

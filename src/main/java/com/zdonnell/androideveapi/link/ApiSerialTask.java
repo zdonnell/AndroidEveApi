@@ -8,7 +8,7 @@ import com.zdonnell.androideveapi.core.ApiListResponse;
 import com.zdonnell.androideveapi.exception.ApiException;
 
 /**
- * Base AsyncTask for acquiring API Data
+ * Base Task for ApiResponses that support entry walking.  
  * 
  * @author Zach
  *
@@ -78,7 +78,7 @@ public abstract class ApiSerialTask<ExecuteParameter, ProgressParameter, Respons
 				apiExceptionOccured = true;
 				exception = e;
 			}
-		} else { // There are no existing journal entries, start from scratch and request all available journal entries
+		} else { // There are no existing entries, start from scratch and request all available journal entries
 	        try { 	        	
 	        	finalResponse = getAllEntries();
 	        } catch (ApiException e) {
@@ -107,6 +107,11 @@ public abstract class ApiSerialTask<ExecuteParameter, ProgressParameter, Respons
 		}
     }
 	
+	/**
+	 * Subclasses implement this to provide the newest entry ID.
+	 * 
+	 * @return the newest entry ID or 0 if there are no current entries
+	 */
 	protected abstract long getNewestRefID();
 	
 	/**
@@ -116,7 +121,21 @@ public abstract class ApiSerialTask<ExecuteParameter, ProgressParameter, Respons
 	 */
 	protected abstract Response buildResponseFromDatabase();
 	
+	/**
+	 * Makes a request to obtain all response entries newer than the provided newestRefID.  Subclass
+	 * implementations should honor newestRefID and not request more entries than necessary.
+	 * 
+	 * @param finalResponse passed in ApiResposne that should be filled with any found newer entries.
+	 * @param newestRefID 
+	 * @throws ApiException
+	 */
 	protected abstract void checkForNewerEntries(Response finalResponse, long newestRefID) throws ApiException;
 	
+	/**
+	 * Obtains all entries from the server.
+	 * 
+	 * @return A built Resposne object containing all entries found
+	 * @throws ApiException
+	 */
 	protected abstract Response getAllEntries() throws ApiException;
 }

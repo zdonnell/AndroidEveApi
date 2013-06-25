@@ -24,7 +24,6 @@ import com.zdonnell.androideveapi.shared.assetlist.EveAsset;
 public class AssetsTask extends ApiCachingTask<Void, Void, AssetListResponse> {			
 	public AssetsTask(ApiExceptionCallback<AssetListResponse> callback, final ApiAuth<?> apiAuth, final Context context) {
 		super(callback, context, true, apiAuth, new EveApiInteraction<AssetListResponse>() {
-			@Override
 			public AssetListResponse perform() throws ApiException {
 				AssetListParser parser = AssetListParser.getInstance();		
 				AssetListResponse response = parser.getResponse(apiAuth);

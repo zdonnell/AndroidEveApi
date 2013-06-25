@@ -21,7 +21,6 @@ import com.zdonnell.androideveapi.link.database.CharacterInfoData;
 public class CharacterInfoTask extends ApiCachingTask<Void, Void, CharacterInfoResponse> {		
 	public CharacterInfoTask(ApiExceptionCallback<CharacterInfoResponse> callback, final ApiAuth<?> apiAuth, final Context context) {
 		super(callback, context, true, apiAuth, new EveApiInteraction<CharacterInfoResponse>() {
-			@Override
 			public CharacterInfoResponse perform() throws ApiException {
 				CharacterInfoParser parser = CharacterInfoParser.getInstance();		
 				CharacterInfoResponse response = parser.getResponse(apiAuth);

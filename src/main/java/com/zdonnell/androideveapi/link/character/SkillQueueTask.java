@@ -24,7 +24,6 @@ import com.zdonnell.androideveapi.link.database.SkillQueueData;
 public class SkillQueueTask extends ApiCachingTask<Void, Void, SkillQueueResponse> {	
 	public SkillQueueTask(ApiExceptionCallback<SkillQueueResponse> callback, final ApiAuth<?> apiAuth, final Context context) {
 		super(callback, context, true, apiAuth, new EveApiInteraction<SkillQueueResponse>(){ 
-			@Override
 			public SkillQueueResponse perform() throws ApiException {
 				SkillQueueParser parser = SkillQueueParser.getInstance();		
 				SkillQueueResponse response = parser.getResponse(apiAuth);

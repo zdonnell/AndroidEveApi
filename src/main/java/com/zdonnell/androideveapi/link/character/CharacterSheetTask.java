@@ -30,7 +30,6 @@ public class CharacterSheetTask extends ApiCachingTask<Void, Void, CharacterShee
 	{
 		super(callback, context, true, apiAuth, new EveApiInteraction<CharacterSheetResponse>(){
 
-			@Override
 			public CharacterSheetResponse perform() throws ApiException
 			{
 				CharacterSheetParser parser = CharacterSheetParser.getInstance();		

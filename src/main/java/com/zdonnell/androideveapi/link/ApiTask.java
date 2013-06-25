@@ -8,13 +8,16 @@ import com.zdonnell.androideveapi.core.ApiResponse;
 import com.zdonnell.androideveapi.exception.ApiException;
 
 /**
- * Base AsyncTask for acquiring API Data
+ * Base AsyncTask for acquiring API Data.  This class does not handle caching of data.
  * 
  * @author Zach
  *
  * @param <ExecuteParameter>
  * @param <ProgressParameter>
  * @param <Response>
+ * 
+ * @see ApiCachingTask
+ * @see ApiSerialTask
  */
 public abstract class ApiTask<ExecuteParameter, ProgressParameter, Response extends ApiResponse> extends AsyncTask<ExecuteParameter, ProgressParameter, Response> {
 	/**

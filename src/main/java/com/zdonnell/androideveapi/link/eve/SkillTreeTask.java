@@ -22,7 +22,6 @@ import com.zdonnell.androideveapi.link.database.SkillTreeData;
 public class SkillTreeTask extends ApiCachingTask<Void, Void, SkillTreeResponse> {		
 	public SkillTreeTask(ApiExceptionCallback<SkillTreeResponse> callback, final Context context) {						
 		super(callback, context, true, null, new EveApiInteraction<SkillTreeResponse>() {
-			@Override
 			public SkillTreeResponse perform() throws ApiException {
 				SkillTreeParser parser = SkillTreeParser.getInstance();
 				SkillTreeResponse response = parser.getResponse();
