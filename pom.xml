@@ -23,7 +23,7 @@
     </distributionManagement>
     <scm>
     	<developerConnection>scm:git:file://${project.basedir}</developerConnection>
- 	  <tag>HEAD</tag>
+ 	  <tag>androideveapi-0.1.6</tag>
   </scm>
 	<licenses>
         <license>

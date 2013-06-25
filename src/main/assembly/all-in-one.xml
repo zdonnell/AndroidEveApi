@@ -9,11 +9,6 @@
 	</formats>
 	<includeBaseDirectory>false</includeBaseDirectory>
 	<files>
-		<file><source>target/eveapi-${version}.jar</source></file>
-		<file><source>target/eveapi-${version}-tests.jar</source></file>
-		<file><source>target/eveapi-${version}-sources.jar</source></file>
-		<file><source>target/eveapi-${version}-test-sources.jar</source></file>
-		<file><source>target/eveapi-${version}-javadoc.jar</source></file>
-		<file><source>target/eveapi-${version}-test-javadoc.jar</source></file>
+		<file><source>target/androideveapi-${version}.apklib</source></file>
 	</files>
 </assembly>
