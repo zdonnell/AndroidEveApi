@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.zdonnell</groupId>
 	<artifactId>androideveapi</artifactId>
-	<version>0.1.6-SNAPSHOT</version>
+	<version>0.1.6</version>
 	<packaging>apklib</packaging>
 	<name>AndroidEveApi</name>
 	<description>Parsers for the eve online api for Android</description>
