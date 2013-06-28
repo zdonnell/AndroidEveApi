@@ -98,6 +98,8 @@ public class WalletTransactionsTask extends ApiSerialTask<Void, Void, WalletTran
 	 * @return the LastRefID (i.e. oldest chronologically)
 	 */
 	private long getLastID(Set<ApiWalletTransaction> transactions) {
+		if (transactions.size() == 0) return 0;
+		
 		ApiWalletTransaction[] transactionsArray = new ApiWalletTransaction[transactions.size()];
 		transactions.toArray(transactionsArray);
 		

@@ -30,6 +30,7 @@ public class Database {
 			createCharacterWalletTransactionTable(db);
 			
 			createAssetsTable(db);
+			createRefTypesTable(db);
 		}
 
 		@Override
@@ -39,6 +40,17 @@ public class Database {
 		}
 	}
 
+	private static void createRefTypesTable(SQLiteDatabase db)
+	{	
+		String newTableQueryString = "create table " + RefTypesData.TABLE + " ("
+				
+				+ RefTypesData.COL_REFTYPE_ID + " integer primary key not null," 
+				+ RefTypesData.COL_REFTYPE_NAME + " text," 
+				
+				+ "UNIQUE (" + RefTypesData.COL_REFTYPE_ID + ") ON CONFLICT REPLACE);";
+
+		db.execSQL(newTableQueryString);
+	}
 		
 	private static void createAssetsTable(SQLiteDatabase db)
 	{	

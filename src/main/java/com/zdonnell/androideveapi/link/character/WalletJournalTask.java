@@ -114,6 +114,8 @@ public class WalletJournalTask extends ApiSerialTask<Void, Void, WalletJournalRe
 	 * @return the LastRefID (i.e. oldest chronologically)
 	 */
 	private long getLastRefID(Set<ApiJournalEntry> entries) {
+		if (entries.size() == 0) return 0;
+		
 		ApiJournalEntry[] entryArray = new ApiJournalEntry[entries.size()];
 		entries.toArray(entryArray);
 		
